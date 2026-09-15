@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chef Taste — Reset your password</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body { margin: 0; font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; background: #FFFFFF; display: flex; min-height: 100vh; align-items: center; justify-content: center; text-align: center; }
+    .box { padding: 32px 24px; max-width: 420px; }
+    .logo { font-size: 22px; font-weight: 300; letter-spacing: 5px; }
+    .rule { width: 30px; height: 1px; background: #D4AF37; margin: 16px auto 24px; }
+    p { color: #666; font-weight: 300; line-height: 1.6; }
+    a.btn { display: inline-block; margin-top: 20px; background: #1A1A1A; color: #D4AF37; text-decoration: none; padding: 16px 32px; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+    .small { font-size: 12px; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="logo">CHEF TASTE</div>
+    <div class="rule"></div>
+    <p id="msg">Tap the button to open the Chef Taste app and choose a new password.</p>
+    <a class="btn" id="open" href="#">OPEN THE APP</a>
+    <p class="small">If nothing happens, make sure the Chef Taste app is installed on this phone and open this email on the phone, not on a computer.</p>
+  </div>
+  <script>
+    // Supabase puts the recovery tokens in the URL fragment; forward them
+    // unchanged into the app's own reset screen.
+    var target = 'mynewapp://reset-password' + (location.hash || '');
+    var btn = document.getElementById('open');
+    btn.href = target;
+    if (!location.hash) {
+      document.getElementById('msg').textContent = 'This reset link is incomplete or has expired. Please request a new one from the app.';
+    }
+  </script>
+</body>
+</html>
